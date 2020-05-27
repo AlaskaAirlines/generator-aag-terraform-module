@@ -2,46 +2,66 @@
 
 Scaffolding for new Terraform module projects
 
-### Features
+## Features
 
-- `main.tf`, `variables.tf`,`outputs.tf` files to module root path
+### Terraform Files
 
-- `.editorconfig`, `.gitignore`, `.gitattributes` and `.terraform-version` files to module root path
+- `main.tf` , `variables.tf` , `outputs.tf` files to module root path
+- `example` directory with module usage tf files
+- `.terraform-version` file to module root path
+
+### Testing Framework Files
 
 - Option to choose test frameworks
-
   - [Terratest](https://github.com/gruntwork-io/terratest)
   - [kitchen-terraform](https://github.com/newcontext-oss/kitchen-terraform)
-
 - `test` directory with an example test based on test framework selection
 
-- `.pre-commit-config.yaml` for `terraform fmt`, `terraform-docs`, `check-merge-conflict` and (`go fmt`, `golint`) / `rubocop`
+### Other Files
 
-- `example` directory with module usage tf files
+- `README.md`
+- `Makefile` and `Brewfile`
+- `.editorconfig`, `.gitignore` and `.gitattributes`
+- `.pre-commit-config.yaml` for
+  - `terraform fmt`
+  - `terraform-docs`
+  - `check-merge-conflict`
+  - ( `go fmt`, `golint` ) or (`rubocop`)
 
-### Prerequisites
+## Prerequisites
 
-- [terraform](https://learn.hashicorp.com/terraform/getting-started/install#installing-terraform) `pro tip: use tfenv`
-- [terraform-docs](https://github.com/segmentio/terraform-docs)
-- [pre-commit](https://pre-commit.com/#install)
-- For tests
+- For module generator itself
+  - [homebrew](https://brew.sh/)
+  - [nodejs](https://nodejs.org/en/download/)
+- For generated Terraform module
+  - [terraform](https://learn.hashicorp.com/terraform/getting-started/install#installing-terraform)
+  - [terraform-docs](https://github.com/segmentio/terraform-docs)
+  - [pre-commit](https://pre-commit.com/#install)
+- For generated Terraform module tests
   - **terratest**
-    - [golang](https://golang.org/doc/install#install) `pro tip: use gvm`
+    - [golang](https://golang.org/doc/install#install)
     - [golint](https://github.com/golang/lint#installation)
   - **kitchen-terraform**
-    - [ruby](https://rvm.io/) `pro tip: use rvm`
+    - [Chef Workstation](https://downloads.chef.io/chef-workstation/)
+    - [kitchen-terraform](https://rubygems.org/gems/kitchen-terraform)
 
-### Installation
+## Installation
 
-Install [nodejs](https://nodejs.org/en/download/) `pro tip: use nvm`
+Issue the following command
 
-### Usage
+```sh
+> make install
+```
+
+## Usage
 
 To use the included generator execute the below command in shell and provide your new module name for the prompt
 
 ```sh
-> npx -p yo -p generator-tf-module -c 'yo tf-module'
-...
+> yo aag-terraform-module
+```
+
+```text
 ? Enter name for the new terraform module :  example-module
 ? Enter description for the new terraform module :  Example terraform module
 ? Enter author name :  sudokar
@@ -55,87 +75,83 @@ To use the included generator execute the below command in shell and provide you
 
 Project layout generated for the new module with _Terratest_ selection
 
-```
-example-module
+```text
+example-module/
+├── example/
+│  ├── main.tf
+│  ├── outputs.tf
+│  └── variables.tf
+├── test/
+│  └── example_test.go
 ├── .editorconfig
 ├── .gitattributes
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── .terraform-version
-├── README.md
+├── Brewfile
 ├── main.tf
+├── Makefile
 ├── outputs.tf
-├── variables.tf
-├── example
-│   ├── main.tf
-│   ├── outputs.tf
-│   └── variables.tf
-├── test
-    └── example_test.go
+├── README.md
+└── variables.tf
 ```
 
 Project layout generated for the new module with _kitchen-terraform_ selection
 
-```
-example-module
+```text
+example-module/
+├── example/
+│  ├── main.tf
+│  ├── outputs.tf
+│  └── variables.tf
+├── test/
+│  └── integration/
+│     └── default/
+│        ├── controls/
+│        │  └── example_spec.rb
+│        └── inspec.yml
 ├── .editorconfig
 ├── .gitattributes
 ├── .gitignore
 ├── .pre-commit-config.yaml
-├── .terraform-version
+├── .rubocop.yml
 ├── .ruby-version
-├── .kitchen.yml
+├── .terraform-version
+├── Brewfile
 ├── Gemfile
-├── README.md
+├── kitchen.yml
 ├── main.tf
+├── Makefile
 ├── outputs.tf
-├── variables.tf
-├── example
-│   ├── main.tf
-│   ├── outputs.tf
-│   └── variables.tf
-├── test
-    └── integration
-        └── default
-            └── example_spec.rb
+├── README.md
+└── variables.tf
 ```
 
-##### Post generation steps
+## Post generation steps
 
-Step 1
-
-On the generated module's root path, Initialize git repository
+On the generated module's root path, issue the following command
 
 ```sh
-git init
+> make install
 ```
 
-Step 2
+This will perform the following steps for you
 
-On the generated module's root path, Install pre-commit hooks
+- Initialize git repository
+- Install pre-commit hooks
+- Install Terraform
+- Prepare testing framework
 
-```sh
-pre-commit install
-```
+## Contribution
 
-Step 3 (Applicable only for `terratest`)
-
-For golang tests, get below libs
-
-```sh
-> go get github.com/gruntwork-io/terratest/modules/terraform
-> go get github.com/stretchr/testify/assert
-```
-
-### Contribution
-
-Found a bug? feel free to raise an issue.  
+Found a bug? Feel free to raise an issue.
 Pull requests are always welcome. Keen to review and merge asap.
 
-### Maintainer
+## Maintainers & Author
 
-This project is maintained by [sudokar](https://github.com/sudokar)
+Maintainers: [Shadow Quests](shadowquests@alaskaair.com) (Alaska Airlines E-Commerce Platform Team)  
+Original Author: [sudokar](https://github.com/sudokar)
 
-### License
+## License
 
 MIT
