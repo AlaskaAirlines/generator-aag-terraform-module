@@ -1,0 +1,5 @@
+brew 'tfenv'
+brew 'terraform-docs'
+brew 'pre-commit'<% if(testFramework == '1') { %>
+brew 'go'<% } %><% if(testFramework == '2') { %>
+cask 'chef-workstation'<% } %>
