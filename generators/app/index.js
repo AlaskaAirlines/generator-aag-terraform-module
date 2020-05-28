@@ -63,7 +63,6 @@ module.exports = class extends Generator {
 
   writing() {
     this.destinationRoot(this.answers.name);
-    
     this.fs.copyTpl(
       `${this.templatePath()}/.!(gitignorefile|gitattributesfile|pre-commit-config|terraform-version)*`,
       this.destinationRoot(),
