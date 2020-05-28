@@ -3,7 +3,7 @@ const yosay = require('yosay');
 
 module.exports = class extends Generator {
   async prompting() {
-    this.log(yosay('Welcome to the aag-terraform-module generator v0.6.1!'));
+    this.log(yosay('Welcome to the aag-terraform-module generator v0.8.0!'));
 
     this.answers = await this.prompt([
       {
