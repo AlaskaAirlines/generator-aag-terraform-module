@@ -3,7 +3,7 @@ const yosay = require('yosay');
 
 module.exports = class extends Generator {
   async prompting() {
-    this.log(yosay('Welcome to the aag-terraform-module generator v0.6.1!'));
+    this.log(yosay('Welcome to the aag-terraform-module generator v0.8.0!'));
 
     this.answers = await this.prompt([
       {
@@ -63,7 +63,6 @@ module.exports = class extends Generator {
 
   writing() {
     this.destinationRoot(this.answers.name);
-
     this.fs.copyTpl(
       `${this.templatePath()}/.!(gitignorefile|gitattributesfile|pre-commit-config|terraform-version)*`,
       this.destinationRoot(),
@@ -111,6 +110,11 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
+      `${this.templatePath()}/docs/*.md`,
+      `${this.destinationPath()}/docs`
+    );
+
+    this.fs.copyTpl(
       `${this.templatePath()}/**/*.tf`,
       this.destinationRoot(),
       {},
@@ -134,6 +138,21 @@ module.exports = class extends Generator {
         {},
       );
     }
+
+    this.fs.copyTpl(
+      this.templatePath('_.releaserc'),
+      this.destinationPath('.releaserc'), {
+        name: this.answers.name
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath('package.json'), {
+        name: this.answers.name,
+        author: this.answers.author
+      }
+    );
 
     this.fs.copyTpl(
       this.templatePath('_README.md'),
