@@ -63,7 +63,7 @@ module.exports = class extends Generator {
 
   writing() {
     this.destinationRoot(this.answers.name);
-
+    
     this.fs.copyTpl(
       `${this.templatePath()}/.!(gitignorefile|gitattributesfile|pre-commit-config|terraform-version)*`,
       this.destinationRoot(),
@@ -73,8 +73,8 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('.gitignorefile'),
       this.destinationPath(`.gitignore`), {
-      testFramework: this.answers.testFramework
-    }
+        testFramework: this.answers.testFramework
+      }
     );
 
     this.fs.copyTpl(
@@ -99,6 +99,11 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
+      `${this.templatePath()}/docs/*.md`,
+      `${this.destinationPath()}/docs`
+    );
+
+    this.fs.copyTpl(
       `${this.templatePath()}/**/*.tf`,
       this.destinationRoot()
     );
@@ -120,13 +125,28 @@ module.exports = class extends Generator {
     }
 
     this.fs.copyTpl(
+      this.templatePath('_.releaserc'),
+      this.destinationPath('.releaserc'), {
+        name: this.answers.name
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath('package.json'), {
+        name: this.answers.name,
+        author: this.answers.author
+      }
+    );
+
+    this.fs.copyTpl(
       this.templatePath('_README.md'),
       this.destinationPath('README.md'), {
-      name: this.answers.name,
-      description: this.answers.description,
-      author: this.answers.author,
-      testFramework: this.answers.testFramework
-    }
+        name: this.answers.name,
+        description: this.answers.description,
+        author: this.answers.author,
+        testFramework: this.answers.testFramework
+      }
     );
   }
 };

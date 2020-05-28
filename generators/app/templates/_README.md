@@ -5,12 +5,13 @@
 ## Overview
 
 <%= description %>
+To stay up to date on our latest changes, visit our [Change Log](./docs/CHANGELOG.md).
 
 ## Usage
 
 ```hcl
 module "<%= name %>" {
-  source = "git::ssh://"
+  source = "github.com/AlaskaAirlines/<%= name %>"
 }
 ```
 
