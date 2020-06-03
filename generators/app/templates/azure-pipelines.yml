@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-- group: 'Terraform Module Variables'
+- group: 'Terraform Module Variables'<% if (testFramework == '1') { %>
 
 steps:
 - task: Go@0
@@ -38,7 +38,7 @@ steps:
     arguments: './test'
   env:
     ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
-
+<% } %>
 - task: Npm@1
   displayName: 'Npm Install'
   inputs:
