@@ -111,13 +111,21 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       `${this.templatePath()}/docs/*.md`,
-      `${this.destinationPath()}/docs`
+      `${this.destinationPath()}/docs`,
     );
 
     this.fs.copyTpl(
       `${this.templatePath()}/**/*.tf`,
       this.destinationRoot(),
       {},
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('azure-pipelines.yml'),
+      this.destinationPath('azure-pipelines.yml'),
+      {
+        testFramework: this.answers.testFramework,
+      },
     );
 
     if (this.answers.testFramework === '1') {
