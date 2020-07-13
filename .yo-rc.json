@@ -1,5 +1,5 @@
 {
-  "generator-aag-terraform-module": {
+  "@alaskaairgroup/generator-aag-terraform-module": {
     "promptValues": {
       "name": "test-module",
       "description": "A short description goes here",

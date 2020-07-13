@@ -1,6 +1,6 @@
 {
-  "name": "generator-aag-terraform-module",
-  "version": "0.8.0",
+  "name": "@alaskaairgroup/generator-aag-terraform-module",
+  "version": "1.0.0",
   "description": "Scaffolding for Terraform module project",
   "main": "index.js",
   "files": [
@@ -9,7 +9,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "github:AlaskaAirlines/generator-aag-terraform-module.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlaskaAirlines/generator-aag-terraform-module.git"
+  },
   "keywords": [
     "yeoman-generator",
     "terraform",
@@ -17,7 +20,7 @@
     "terraform scaffold",
     "scaffold"
   ],
-  "author": " Alaska Airlines E-Commerce Platform Team <shadowquests@alaskaair.com>",
+  "author": "Alaska Airlines E-Commerce Platform Team <shadowquests@alaskaair.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/AlaskaAirlines/generator-aag-terraform-module/issues"
@@ -28,12 +31,18 @@
     "yosay": "^2.0.2"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^2.5.0"
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "semantic-release": "^17.1.1"
+  },
+  "directories": {
+    "doc": "docs"
   }
 }

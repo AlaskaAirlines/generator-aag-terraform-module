@@ -1,0 +1,26 @@
+{
+  "branches": [
+    "master"
+  ],
+  "repositoryUrl": "https://github.com/AlaskaAirlines/generator-aag-terraform-module",
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "./docs/CHANGELOG.md",
+        "changelogTitle": "# Semantic Release Automated Changelog"
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "./docs/CHANGELOG.md"
+        ]
+      }
+    ],
+    "@semantic-release/github"
+  ]
+}
