@@ -3,7 +3,8 @@
 ## Overview
 
 <%= description %>  
-To stay up to date on our latest changes, visit our [Changelog](./docs/CHANGELOG.md).
+
+To stay up to date on our latest changes, visit our [Changelog](./docs/CHANGELOG.md)
 
 ## Usage
 
@@ -59,7 +60,7 @@ module "<%= name %>" {
 Issue the following command
 
 ```sh
-$ make install
+make install
 ```
 
 This will perform the following steps for you
@@ -75,7 +76,7 @@ This will perform the following steps for you
 - In the module root directory, run the below command
 
 ```sh
-$ make test
+make test
 ```
 
 ## Maintainers

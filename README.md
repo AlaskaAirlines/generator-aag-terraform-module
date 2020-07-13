@@ -2,13 +2,15 @@
 
 A [Yeoman Generator](http://yeoman.io/) to create new [Terraform module](https://www.terraform.io/docs/configuration/modules.html) projects for Alaska Airlines. This generator creates a base repository to start a new terraform module along with [Terratest](https://github.com/gruntwork-io/terratest) or [kitchen-terraform](https://rubygems.org/gems/kitchen-terraform) to automatically test the module.
 
+To stay up to date on our latest changes, visit our [Changelog](./docs/CHANGELOG.md)
+
 ## Install
 
 To install the generator, run the following commands
 
 ```sh
-$ npm install --global yo
-$ npm install --global @alaskaairgroup/generator-aag-terraform-module
+npm install --global yo
+npm install --global @alaskaairgroup/generator-aag-terraform-module
 ```
 
 ## Usage
@@ -16,7 +18,7 @@ $ npm install --global @alaskaairgroup/generator-aag-terraform-module
 To run the generator use the command below and provide your new module name for the prompt
 
 ```sh
-$ yo aag-terraform-module
+yo aag-terraform-module
 ```
 
 ```text
@@ -62,7 +64,7 @@ $ yo aag-terraform-module
 In the generated module directory, run the following command
 
 ```sh
-$ make install
+make install
 ```
 
 This will perform the following steps for you
@@ -91,15 +93,17 @@ This will perform the following steps for you
     - [Chef Workstation](https://downloads.chef.io/chef-workstation/)
     - [kitchen-terraform](https://rubygems.org/gems/kitchen-terraform)
 
-## Development
+## Contributing
+
+See [Contributing](./docs/CONTRIBUTING.md) for guidelines
 
 ### Building The Generator
 
 If you are interested in contributing or modifying the generator itself, clone this repo and install all modules before building the project
 
 ```sh
-$ npm install
-$ npm run build
+npm install
+npm run build
 ```
 
 The bundled generator and the template files will end up in the `./generators/` folder
@@ -109,7 +113,7 @@ The bundled generator and the template files will end up in the `./generators/` 
 If you want to run the generator tests, you can run the following command
 
 ```sh
-$ make test
+make test
 ```
 
 ### Using it in dev mode
@@ -117,13 +121,13 @@ $ make test
 In the `generator-aag-terraform-module` directory use the following command, this will link the local copy of the folder as a global node module
 
 ```sh
-$ npm link
+npm link
 ```
 
 To revert the link operation
 
 ```sh
-$ npm unlink
+npm unlink
 ```
 
 ## Maintainers & Author
