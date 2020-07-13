@@ -99,14 +99,11 @@ See [Contributing](./docs/CONTRIBUTING.md) for guidelines
 
 ### Building The Generator
 
-If you are interested in contributing or modifying the generator itself, clone this repo and install all modules before building the project
+If you are interested in contributing or modifying the generator itself, clone this repo and install all modules
 
 ```sh
 npm install
-npm run build
 ```
-
-The bundled generator and the template files will end up in the `./generators/` folder
 
 ### Testing The Generator
 

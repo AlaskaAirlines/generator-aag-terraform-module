@@ -17,15 +17,13 @@ module "<%= name %>" {
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| null | ~> 2.1 |
+No requirements.
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| null | ~> 2.1 |
+| null | n/a |
 
 ## Inputs
 
