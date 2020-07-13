@@ -2,7 +2,8 @@ all: install
 
 install:
 	npm install --global yo
-	npm install --global @alaskaairgroup/generator-aag-terraform-module
+	npm install
+	npm link
 
 test:
 	mkdir -p ../module-test-dir && cp ./.yo-rc.json ../module-test-dir && cd ../module-test-dir && /usr/bin/yes "" | yo aag-terraform-module
