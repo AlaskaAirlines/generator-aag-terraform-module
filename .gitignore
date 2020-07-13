@@ -57,3 +57,6 @@ typings/
 
 # Yeoman repository installed packages directory
 .yo-repository
+
+# direnv environment variables
+.envrc
