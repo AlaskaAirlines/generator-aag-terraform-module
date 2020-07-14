@@ -1,41 +1,89 @@
 trigger:
-  - master
-
+  branches:
+    include:
+    - master
 pool:
-  vmImage: "macOS-latest"
-
+  vmImage: macOS-latest
 variables:
-  - group: "Terraform Module Variables"
-
-jobs:
-  - job:
+- group: Terraform Module Variables
+stages:
+- stage: __default
+  jobs:
+  - job: Build
     displayName: Build and Test
     steps:
-      - task: NodeTool@0
-        inputs:
-          versionSpec: "14.x"
-        displayName: "Install Node.js"
-
-      - script: |
+    - task: NodeTool@0
+      displayName: Install Node.js
+      inputs:
+        versionSpec: 14.x
+    - task: Bash@3
+      displayName: Install and link generator
+      inputs:
+        targetType: inline
+        script: |
+          npm install --global yo
+          npm link
+    - task: Bash@3
+      displayName: Run generator
+      inputs:
+        targetType: inline
+        script: |
+          cp "$(Build.SourcesDirectory)/.yo-rc.json" .
+          /usr/bin/yes "" | yo @alaskaairgroup/aag-terraform-module
+        workingDirectory: $(Agent.TempDirectory)
+    - task: Bash@3
+      displayName: Install module prereqs
+      inputs:
+        targetType: inline
+        script: |
           make install
-        displayName: "npm install and link"
-
-      - script: |
-          make test
-        displayName: "Test module tests"
-
-  - job:
+        workingDirectory: $(Agent.TempDirectory)/test-module
+    - task: Bash@3
+      displayName: Prepare module functional tests
+      inputs:
+        targetType: inline
+        script: |
+          go get -u golang.org/x/lint/golint
+          go get -u github.com/gruntwork-io/terratest/modules/terraform
+          go get -u github.com/stretchr/testify/assert
+        workingDirectory: $(Agent.TempDirectory)/test-module
+    - task: Bash@3
+      displayName: Execute module functional tests
+      inputs:
+        targetType: inline
+        script: |
+          go test -v ./test/example_test.go
+        workingDirectory: $(Agent.TempDirectory)/test-module
+    - task: Bash@3
+      displayName: Execute pre-commit hooks tests
+      inputs:
+        targetType: inline
+        script: |
+          GOLINT_PATH="$(dirname "$(go list -f {{.Target}} golang.org/x/lint/golint)")"
+          export PATH=$PATH:$GOLINT_PATH
+          git config user.email "test@example.com"
+          git config user.name "Test User"
+          git add .
+          git commit -m "Initial commit"
+        workingDirectory: $(Agent.TempDirectory)/test-module
+  - job: Release
     displayName: Release and Publish
+    dependsOn:
+    - Build
     steps:
-      - script: |
+    - task: UseNode@1
+      inputs:
+        version: 14.x
+    - task: Bash@3
+      displayName: Release module
+      env:
+        GH_TOKEN: $(GH_TOKEN)
+      inputs:
+        targetType: inline
+        script: |
+          npm ci
           npx semantic-release
-        displayName: "Release module"
-        env:
-          GH_TOKEN: $(GH_TOKEN)
-        enabled: false
-
-      - task: Npm@1
-        inputs:
-          command: "publish"
-          publishEndpoint: "NPM alaskaairgroup Organization"
-        enabled: false
+    - task: Npm@1
+      inputs:
+        command: publish
+        publishEndpoint: NPM alaskaairgroup Organization
