@@ -1,0 +1,30 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - .azure-pipelines
+      - docs
+      - README.md
+
+pr: none
+
+variables:
+  - group: Terraform Module Variables
+
+pool:
+  vmImage: macOS-latest
+
+stages:
+  - stage: Test
+    jobs:
+      - job: Test
+        steps:
+          - template: templates/install.yml
+          - template: templates/run-test.yml
+  - stage: Publish
+    jobs:
+      - job: Publish
+        steps:
+          - template: templates/release-publish.yml

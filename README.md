@@ -18,7 +18,7 @@ npm install --global @alaskaairgroup/generator-aag-terraform-module
 To run the generator use the command below and provide your new module name for the prompt
 
 ```sh
-yo aag-terraform-module
+yo @alaskaairgroup/generator-aag-terraform-module
 ```
 
 ```text

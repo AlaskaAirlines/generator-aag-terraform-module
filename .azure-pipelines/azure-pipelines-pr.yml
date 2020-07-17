@@ -1,0 +1,21 @@
+pr:
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - .azure-pipelines
+      - docs
+      - README.md
+
+trigger: none
+
+variables:
+  - group: Terraform Module Variables
+
+pool:
+  vmImage: macOS-latest
+
+steps:
+  - template: templates/install.yml
+  - template: templates/run-test.yml

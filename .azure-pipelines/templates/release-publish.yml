@@ -1,0 +1,20 @@
+steps:
+
+  - task: UseNode@1
+    inputs:
+      version: 14.x
+
+  - task: Bash@3
+    displayName: Release module
+    env:
+      GH_TOKEN: $(BOT_GH_TOKEN)
+    inputs:
+      targetType: inline
+      script: |
+        npm ci
+        npx semantic-release
+
+  - task: Npm@1
+    inputs:
+      command: publish
+      publishEndpoint: NPM alaskaairgroup Organization

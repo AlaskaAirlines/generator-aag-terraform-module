@@ -1,0 +1,15 @@
+steps:
+
+  - task: NodeTool@0
+    displayName: Install Node.js
+    inputs:
+      versionSpec: 14.x
+
+  - task: Bash@3
+    displayName: Install and link generator
+    inputs:
+      targetType: inline
+      script: |
+        npm install --global yo
+        npm ci
+        npm link
