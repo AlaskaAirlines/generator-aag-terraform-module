@@ -1,4 +1,6 @@
-# Alaska Airlines Terraform Module Generator [![npm version](https://badge.fury.io/js/%40alaskaairgroup%2Fgenerator-aag-terraform-module.svg)](https://badge.fury.io/js/%40alaskaairgroup%2Fgenerator-aag-terraform-module)
+# Alaska Airlines Terraform Module Generator
+
+[![Build Status](https://dev.azure.com/itsals/AlaskaAirlines_GitHub/_apis/build/status/Merge%20to%20master%20generator-aag-terraform-module?branchName=master&stageName=Publish)](https://dev.azure.com/itsals/AlaskaAirlines_GitHub/_build/latest?definitionId=6070&branchName=master) [![npm version](https://badge.fury.io/js/%40alaskaairgroup%2Fgenerator-aag-terraform-module.svg)](https://badge.fury.io/js/%40alaskaairgroup%2Fgenerator-aag-terraform-module)
 
 A [Yeoman Generator](http://yeoman.io/) to create new [Terraform module](https://www.terraform.io/docs/configuration/modules.html) projects for Alaska Airlines. This generator creates a base repository to start a new terraform module along with [Terratest](https://github.com/gruntwork-io/terratest) or [kitchen-terraform](https://rubygems.org/gems/kitchen-terraform) to automatically test the module.
 
@@ -26,7 +28,7 @@ yo @alaskaairgroup/generator-aag-terraform-module
 ? Enter description for the new terraform module :  Example terraform module
 ? Enter author name :  sudokar
 ? Choose terraform version (Use arrow keys)
-❯ 0.12
+❯ 0.13
   0.11
 ? Choose test framework (Use arrow keys)
 ❯ Terratest

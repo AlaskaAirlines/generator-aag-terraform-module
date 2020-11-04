@@ -4,7 +4,7 @@
       "name": "test-module",
       "description": "A short description goes here",
       "author": "Shadow Quests (E-Commerce Platform Team) <shadowquests@alaskaair.com>",
-      "tfVersion": "12",
+      "tfVersion": "13",
       "testFramework": "1"
     }
   }

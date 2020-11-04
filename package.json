@@ -27,20 +27,22 @@
   },
   "homepage": "https://github.com/AlaskaAirlines/generator-aag-terraform-module#readme",
   "dependencies": {
-    "yeoman-generator": "^4.10.0",
+    "yeoman-generator": "^4.12.0",
     "yosay": "^2.0.2"
   },
   "devDependencies": {
+    "semantic-release": "^17.2.2",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^2.5.0",
-    "semantic-release": "^17.1.1"
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint": "^7.12.1",
+    "@octokit/core": "^3.2.1",
+    "npm-user-validate": "^1.0.1"
   },
   "directories": {
     "doc": "docs"

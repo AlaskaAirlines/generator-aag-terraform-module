@@ -1,6 +1,20 @@
-.terraform
-terraform.tfstate
-*.tfstate*
-terraform.tfvars
-*.backup<% if(testFramework == '2') { %>
+# Terraform
+**/.terraform
+terraform.tfstate*
+.terraform.tfstate.lock.info
+*.backup
+plan.out
+fixtures.auto.tfvars
+secrets.auto.tfvars
+
+# direnv
+.envrc
+
+# Node
+node_modules
+
+# OS
+.DS_Store<% if(testFramework == '2') { %>
+
+# Test Kitchen
 *.kitchen<% } %>

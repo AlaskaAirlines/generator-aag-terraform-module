@@ -8,15 +8,15 @@ variables:
 - group: 'Terraform Module Variables'<% if (testFramework == '1') { %>
 
 jobs:
-- job: 
+- job:
   displayName: Build, Test and Deploy
   timeoutInMinutes: 130
   steps:
   - task: Go@0
-      displayName: 'Go get golint'
-      inputs:
-        command: 'get'
-        arguments: '-u golang.org/x/lint/golint'
+    displayName: 'Go get golint'
+    inputs:
+      command: 'get'
+      arguments: '-u golang.org/x/lint/golint'
 
   - task: Go@0
     displayName: 'Go get test dependencies'
@@ -28,7 +28,7 @@ jobs:
     displayName: 'Go test'
     inputs:
       command: 'test'
-      arguments: './test -timeout 2h'
+      arguments: './test -timeout 2h -v'
     env:
       ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
       AZURE_CLIENT_ID: $(ARM_CLIENT_ID)
@@ -47,4 +47,4 @@ jobs:
       targetType: 'inline'
       script: 'npx semantic-release'
     env:
-      GH_TOKEN: $(GH_TOKEN)
+      GH_TOKEN: $(BOT_GH_TOKEN)
