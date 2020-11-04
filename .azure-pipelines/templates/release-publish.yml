@@ -13,8 +13,3 @@ steps:
       script: |
         npm ci
         npx semantic-release
-
-  - task: Npm@1
-    inputs:
-      command: publish
-      publishEndpoint: NPM alaskaairgroup Organization
