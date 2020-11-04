@@ -4,6 +4,11 @@ steps:
     inputs:
       version: 14.x
 
+  - task: npmAuthenticate@0
+    inputs:
+      workingFile: .npmrc
+      customEndpoint: NPM alaskaairgroup Organization
+
   - task: Bash@3
     displayName: Release module
     env:
