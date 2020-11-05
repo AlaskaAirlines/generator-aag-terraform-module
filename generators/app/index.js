@@ -122,8 +122,8 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
-      `${this.templatePath()}/example/*.example`,
-      `${this.destinationPath()}/example`,
+      `${this.templatePath()}/examples/*.example`,
+      `${this.destinationPath()}/examples`,
     );
 
     this.fs.copyTpl(

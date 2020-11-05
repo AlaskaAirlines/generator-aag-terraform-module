@@ -40,7 +40,7 @@ yo @alaskaairgroup/generator-aag-terraform-module
 ### Terraform Files
 
 - `main.tf` , `variables.tf` , `outputs.tf` files to module root path
-- `example` directory with module usage tf files
+- `examples` directory with module usage tf files
 - `.terraform-version` file to module root path
 
 ### Testing Framework Files
