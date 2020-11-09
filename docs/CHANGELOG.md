@@ -1,5 +1,12 @@
 # Semantic Release Automated Changelog
 
+# [1.2.0](https://github.com/AlaskaAirlines/generator-aag-terraform-module/compare/v1.1.0...v1.2.0) (2020-11-09)
+
+
+### Features
+
+* Add support for Terraform 0.13 ([2b5dd42](https://github.com/AlaskaAirlines/generator-aag-terraform-module/commit/2b5dd426fdb8b5d780640b58abc6abbaa3876437))
+
 # [1.1.0](https://github.com/AlaskaAirlines/generator-aag-terraform-module/compare/v1.0.0...v1.1.0) (2020-07-17)
 
 
