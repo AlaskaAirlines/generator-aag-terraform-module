@@ -29,6 +29,7 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| input | module input variable | `string` | `"default_value"` | no |
 | mandatory | this field is mandatory | `string` | n/a | yes |
 | optional | this field is optional | `string` | `"default_value"` | no |
 

@@ -1,7 +1,7 @@
 ---
 driver:
   name: terraform
-  root_module_directory: ./example
+  root_module_directory: ./examples
 
 provisioner:
   name: terraform

@@ -22,8 +22,7 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'author',
         message: 'Enter author name : ',
-        default:
-          'Shadow Quests (E-Commerce Platform Team) <shadowquests@alaskaair.com>',
+        default: 'Shadow Quests (E-Commerce Platform Team) <shadowquests@alaskaair.com>',
         store: true,
       },
       {
@@ -33,8 +32,8 @@ module.exports = class extends Generator {
         store: true,
         choices: [
           {
-            name: '0.12',
-            value: '12',
+            name: '0.13',
+            value: '13',
           },
           {
             name: '0.11',
@@ -117,7 +116,14 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       `${this.templatePath()}/**/*.tf`,
       this.destinationRoot(),
-      {},
+      {
+        tfVersion: this.answers.tfVersion,
+      },
+    );
+
+    this.fs.copyTpl(
+      `${this.templatePath()}/examples/*.example`,
+      `${this.destinationPath()}/examples`,
     );
 
     this.fs.copyTpl(
@@ -150,16 +156,16 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_.releaserc'),
       this.destinationPath('.releaserc'), {
-        name: this.answers.name
-      }
+        name: this.answers.name,
+      },
     );
 
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'), {
         name: this.answers.name,
-        author: this.answers.author
-      }
+        author: this.answers.author,
+      },
     );
 
     this.fs.copyTpl(

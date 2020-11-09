@@ -1,5 +1,4 @@
 steps:
-
   - task: Bash@3
     displayName: Run generator
     inputs:
@@ -18,21 +17,11 @@ steps:
       workingDirectory: $(Agent.TempDirectory)/test-module
 
   - task: Bash@3
-    displayName: Prepare module functional tests
-    inputs:
-      targetType: inline
-      script: |
-        go get -u golang.org/x/lint/golint
-        go get -u github.com/gruntwork-io/terratest/modules/terraform
-        go get -u github.com/stretchr/testify/assert
-      workingDirectory: $(Agent.TempDirectory)/test-module
-
-  - task: Bash@3
     displayName: Execute module functional tests
     inputs:
       targetType: inline
       script: |
-        go test -v ./test/example_test.go
+        make test
       workingDirectory: $(Agent.TempDirectory)/test-module
 
   - task: Bash@3
